@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="main.css" type="text/css" />
+    </head>
+    <body ng-controller="ctrl as cnt">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGgyQ8hnoyK6alvGMkp26vk4LtWycCpYBBldpq0X92NZgJdqh6" class="background">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div class="co-xs-12 text-center header">
+                        <img src="http://www.dingit.tv/blog/wp-content/uploads/2014/11/Tychus-Findlay.jpg" class="img">
+                        <h1>STARCRAFT RANKINGS</h1>
+                    </div>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <th ng-repeat="player in cnt.players.cols" class="tableHead">{{ player }}</th>
+                        </thead>
+                         
+                         
+                        <tr ng-repeat='player in cnt.players.data | orderBy : "4" : true | limitTo : 20 : cnt.counter.page'>
+                            <td ng-repeat='info in player '>{{ info }}</td>
+                        </tr>
+                    </table>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <ul class="pagination pagination-selected">
+                                <li ng-click='cnt.firstPage()'><a href="javascript:void(0);">First</a></li>
+                                <li ng-click='cnt.previousPage()'>
+                                  <a href="javascript:void(0);" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                  </a>
+                                </li>
+                                <li ng-click='cnt.updatePage()'><a href="javascript:void(0);">{{ cnt.currentPage() }}</a></li>
+                                <li ng-click='cnt.nextPage()'>
+                                  <a href="javascript:void(0);" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                  </a>
+                                </li>
+                                <li ng-click='cnt.lastPage()'><a href="javascript:void(0);">Last</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+                    <!--         scripts        -->
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>

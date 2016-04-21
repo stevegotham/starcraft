@@ -1,0 +1,32 @@
+
+.background {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+.img {
+    width: 80%;
+}
+
+.header h1 {
+    color: cornflowerblue;
+    padding-top: 8px;
+}
+
+.tableHead {
+    color: cornflowerblue;
+    border: 1px red solid;
+}
+
+tr:nth-child(even) {
+    color: red;
+}
+
+tr:nth-child(odd) {
+    background-color: purple;
+}
+
+tr:nth-child(odd) td {
+    background-color: #999;
+}
