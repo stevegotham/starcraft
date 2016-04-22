@@ -3,8 +3,12 @@ angular.module("app", [])
     
 function ctrlFunc(factoryName) {
     var ctrl = this
+    
     ctrl.players = factoryName.players
     ctrl.counter = {page:0}
+    ctrl.filterResult;
+    ctrl.searchResult;
+    
     ctrl.currentPage = function() {
         return ((ctrl.counter.page+20)/20)
     }
@@ -24,7 +28,6 @@ function ctrlFunc(factoryName) {
     ctrl.lastPage = function() {
         ctrl.counter = {page:80}
     }
-    ctrl.columnName = '4';
     ctrl.runfunc = function() {
         var searchValue = [
             'username',
@@ -36,7 +39,6 @@ function ctrlFunc(factoryName) {
         ]
         for(var i=0;i<searchValue.length;i++) {
             if (ctrl.searchResult === searchValue[i]) {
-                ctrl.columnName = (searchValue.indexOf(searchValue[i])).toString()
                 ctrl.searchResult = searchValue.indexOf(searchValue[i]).toString()
             }
         }
