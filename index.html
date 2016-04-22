@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html ng-app="app">
+   
     <head>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="main.css" type="text/css" />
     </head>
+    
     <body ng-controller="ctrl as cnt">
         <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGgyQ8hnoyK6alvGMkp26vk4LtWycCpYBBldpq0X92NZgJdqh6" class="background">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2">
-                    <div class="co-xs-12 text-center header">
-                        <img src="http://www.dingit.tv/blog/wp-content/uploads/2014/11/Tychus-Findlay.jpg" class="img">
+                    <div class="text-center header">
+                        <img src="https://www.dingit.tv/blog/wp-content/uploads/2014/11/Tychus-Findlay.jpg" class="img">
                         <h1>STARCRAFT RANKINGS</h1>
+                        <input type="text" ng-model="cnt.filterResult" placeHolder="filter by race/region">
+                        <input type="text" ng-model="cnt.searchResult" placeHolder="order by category" ng-keypress="cnt.enter()" ng-blur="cnt.runfunc()">
+                        <input type="checkbox" ng-model="ascending"><span class="spanish"> click to toggle order</span>
                     </div>
                     <table class="table table-striped table-bordered">
                         <thead>
-                            <th ng-repeat="player in cnt.players.cols" class="tableHead">{{ player }}</th>
+                            <th ng-repeat="statsName in cnt.players.cols" class="tableHead">{{ statsName }}</th>
                         </thead>
-                         
-                         
-                        <tr ng-repeat='player in cnt.players.data | orderBy : "4" : true | limitTo : 20 : cnt.counter.page'>
-                            <td ng-repeat='info in player '>{{ info }}</td>
+                        <tr ng-repeat='player in cnt.players.data | orderBy : cnt.searchResult : ascending | filter : cnt.filterResult | limitTo : 20 : cnt.counter.page'>
+                            <td ng-repeat='info in player'>{{ info }}</td>
                         </tr>
                     </table>
                     <div class="row">

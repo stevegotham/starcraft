@@ -1,4 +1,10 @@
+input {
+    margin-bottom: 25px;
+}
 
+.spanish {
+    color: white;
+}
 .background {
     position: fixed;
     height: 100vh;
@@ -11,7 +17,7 @@
 
 .header h1 {
     color: cornflowerblue;
-    padding-top: 8px;
+    margin-top: 5px;
 }
 
 .tableHead {
@@ -21,6 +27,7 @@
 
 tr:nth-child(even) {
     color: red;
+    background-color: black;
 }
 
 tr:nth-child(odd) {
@@ -29,4 +36,6 @@ tr:nth-child(odd) {
 
 tr:nth-child(odd) td {
     background-color: #999;
+    color: black;
+    font-weight: bold;
 }

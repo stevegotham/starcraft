@@ -24,6 +24,28 @@ function ctrlFunc(factoryName) {
     ctrl.lastPage = function() {
         ctrl.counter = {page:80}
     }
+    ctrl.columnName = '4';
+    ctrl.runfunc = function() {
+        var searchValue = [
+            'username',
+            'fullname',
+            'region',
+            'race',
+            'wins',
+            'losses'
+        ]
+        for(var i=0;i<searchValue.length;i++) {
+            if (ctrl.searchResult === searchValue[i]) {
+                ctrl.columnName = (searchValue.indexOf(searchValue[i])).toString()
+                ctrl.searchResult = searchValue.indexOf(searchValue[i]).toString()
+            }
+        }
+    }
+    ctrl.enter = function() {
+        if(event.keyCode === 13) {
+            event.target.blur();
+        }
+    }
 }
 
 angular.module('app').factory('factoryName', [factoryName])
@@ -841,8 +863,8 @@ function factoryName() {
                 407
             ]
         ]
-    
 }
+    
     return {
         players : players,
     }
