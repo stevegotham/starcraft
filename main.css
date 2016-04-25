@@ -21,6 +21,15 @@ input {
     margin-top: 5px;
 }
 
+.aside {
+    left: 0;
+    top: 0;
+    color: white;
+    position: fixed;
+    border: 2px white solid;
+    background-color: black;
+}
+
 .tableHead {
     color: cornflowerblue;
     border: 1px red solid;
